@@ -26,6 +26,9 @@
 @synthesize authenticator=_authenticator, documentIDs=_documentIDs, channels=_channels;
 @synthesize checkpointInterval=_checkpointInterval;
 
+#if TARGET_OS_IPHONE
+@synthesize runInBackground=_runInBackground;
+#endif
 
 + (instancetype) withDatabase: (CBLDatabase*)database targetURL: (NSURL*)targetURL {
     return [[self alloc] initWithDatabase: database targetURL: targetURL];
@@ -71,6 +74,10 @@
     c.documentIDs = _documentIDs;
     c.channels = _channels;
     c.checkpointInterval = _checkpointInterval;
+    
+#if TARGET_OS_IPHONE
+    c.runInBackground = _runInBackground;
+#endif
     return c;
 }
 
