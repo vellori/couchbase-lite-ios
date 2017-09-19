@@ -336,7 +336,7 @@
     
     id listener = [r addChangeListener: ^(CBLReplicatorChange* change) {
         AssertNil(change.status.error);
-        if (change.status.activity == kCBLReplicatorBusy) {
+        if (change.status.activity == kCBLReplicatorIdle) {
             [foregroundExps[foregroundCount++] fulfill];
         } else if (change.status.activity == kCBLReplicatorOffline) {
             [backgroundExps[backgroundCount++] fulfill];
